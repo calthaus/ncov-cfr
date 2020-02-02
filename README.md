@@ -4,7 +4,7 @@
 
 Christian L. Althaus (christian.althaus@ispm.unibe.ch), Institute of Social and Preventive Medicine, University of Bern, Bern, Switzerland
 
-**Summary: We provide a preliminary estimate of the case fatality ratio (CFR) of 2019-nCoV at 4.3% (95% confidence interval: 0.2%-18.8%). While there remains considerable uncertainty around this estimate, CFR appears to be higher than what is typically observed for seasonal influenza, but lower than what was observed for SARS-CoV or MERS-CoV.**
+**Summary: We provide a preliminary estimate of the case fatality ratio (CFR) of 2019-nCoV at 4.3% (95% confidence interval: 0.2%-18.8%). While there remains considerable uncertainty around this estimate (n = 1!), CFR is arguably higher than what is typically observed for seasonal influenza, but lower than what was observed for SARS-CoV or MERS-CoV.**
 
 While the basic reproduction number of the 2019-nCoV epidemic in China [has been estimated](https://github.com/jriou/wcov) at 2.2 (90% high density interval: 1.4-3.8) (1,2), there remains considerable uncertainty regarding the case fatality ratio (CFR). To date, naive estimates of CFR from the reported numbers of confirmed cases and deaths are difficult to interpret due to possible biases in observed cases and the right-censoring of cases with respect to the time delay from illness onset to death (3).
 
