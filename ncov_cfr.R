@@ -1,14 +1,14 @@
 # Estimating case fatality ratio (CFR) of 2019-nCoV
-# Christian L. Althaus, 2 February 2020
+# Christian L. Althaus, 3 February 2020
 
 # Load libraries
 library(lubridate)
 library(bbmle)
 library(plotrix)
 
-# Load 2019-nCoV cases (n=76) identified outside of China 
-# Source: WHO Novel Coronavirus(2019-nCoV) Situation Report - 13, and media reports for the death on the Philippines
-exports <- read.csv("ncov_cases.csv")
+# Load 2019-nCoV cases (n=88) identified outside of China 
+# Source: WHO Novel Coronavirus(2019-nCoV) Situation Report - 14, and media reports for the death on the Philippines
+exports <- read.csv("ncov_cases_20200203.csv")
 begin <- ymd(exports$date[1])
 cases <- exports$cases
 deaths <- exports$deaths
@@ -77,7 +77,7 @@ plogis(confidence)
 png("figures/ncov_cases.png", height = 500, width = 600)
 par(mfrow = c(2, 2))
 plot(days, cases, xlim = range(interval),
-	 pch = 16, col = "steelblue", xlab = "(Data: WHO Situation Report 13)", ylab = "Cases",
+	 pch = 16, col = "steelblue", xlab = "(Data: WHO Situation Report 14)", ylab = "Cases",
 	 main = "Onset of symptoms in cases outside China", axes = FALSE, frame = FALSE)
 axis(1, interval, begin + interval - 1)
 axis(2)
@@ -100,13 +100,13 @@ dev.off()
 
 # Plot the estimtate and future changes
 png("figures/ncov_cfr.png", height = 250, width = 300)
-x_date <- c(ymd(20200201))
-y_estimate <- c(0.04271349)
-y_upper <- c(0.187970288)
-y_lower <- c(0.002435814)
+x_date <- c(ymd(20200202), ymd(20200203))
+y_estimate <- c(0.04271349, 0.04129256)
+y_upper <- c(0.187970288, 0.181715697)
+y_lower <- c(0.002435814, 0.002354727)
 plotCI(x_date, y_estimate,
 	   ui = y_upper, li = y_lower,
-	   xlim = c(x_date - 4, x_date + 4), ylim = c(0, 0.2),
+	   xlim = range(x_date) + c(-1, 1), ylim = c(0, 0.2),
 	   pch = 16, col = "steelblue",
 	   xlab = NA, ylab = "Case fatality ratio", frame = FALSE)
 dev.off()
