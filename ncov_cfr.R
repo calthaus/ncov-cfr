@@ -8,7 +8,7 @@ library(plotrix)
 
 # Load 2019-nCoV cases (n=88) identified outside of China 
 # Source: WHO Novel Coronavirus(2019-nCoV) Situation Report - 14, and media reports for the death on the Philippines
-exports <- read.csv("ncov_cases_20200203.csv")
+exports <- read.csv("data/ncov_cases_20200203.csv")
 begin <- ymd(exports$date[1])
 cases <- exports$cases
 deaths <- exports$deaths
