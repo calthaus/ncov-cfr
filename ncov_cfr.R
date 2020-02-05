@@ -1,14 +1,14 @@
 # Estimating case fatality ratio (CFR) of 2019-nCoV
-# Christian L. Althaus, 4 February 2020
+# Christian L. Althaus, 5 February 2020
 
 # Load libraries
 library(lubridate)
 library(bbmle)
 library(plotrix)
 
-# Load 2019-nCoV cases (n=93) identified outside of China 
-# Source: WHO Novel Coronavirus(2019-nCoV) Situation Report - 15, and media reports for the death on the Philippines
-exports <- read.csv("data/ncov_cases_20200204.csv")
+# Load 2019-nCoV cases (n=100) identified outside of China 
+# Source: WHO Novel Coronavirus(2019-nCoV) Situation Report - 16, and media reports for the death on the Philippines
+exports <- read.csv("data/ncov_cases_20200205.csv")
 begin <- ymd(exports$date[1])
 cases <- exports$cases
 deaths <- exports$deaths
@@ -100,10 +100,10 @@ dev.off()
 
 # Plot the estimtate and future changes
 png("figures/ncov_cfr.png", height = 250, width = 300)
-x_date <- c(ymd(20200202), ymd(20200203), ymd(20200204))
-y_estimate <- c(0.04271349, 0.04129256, 0.03936208)
-y_upper <- c(0.187970288, 0.181715697, 0.173219590)
-y_lower <- c(0.002435814, 0.002354727, 0.002244574)
+x_date <- c(ymd(20200202), ymd(20200203), ymd(20200204), ymd(20200205))
+y_estimate <- c(0.04271349, 0.04129256, 0.03936208, 0.02604126)
+y_upper <- c(0.187970288, 0.181715697, 0.173219590, 0.114629818)
+y_lower <- c(0.002435814, 0.002354727, 0.002244574, 0.001484787)
 plotCI(x_date, y_estimate,
 	   ui = y_upper, li = y_lower,
 	   xlim = range(x_date) + c(-1, 1), ylim = c(0, 0.2),
