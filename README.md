@@ -20,7 +20,7 @@ First, we collect 2019-nCoV cases and deaths outside China from [WHO](https://ww
 
 **Figure 2. Probability distribution of time from onset of 2019-nCoV symptoms to death.** The distribution is based on the estimates by Linton et al. (3).
 
-We estimate the CFR of 2019-nCoV at 3.9% (95% confidence interval: 0.2%-17.3%). Due to the observation of only one death outside China, the uncertainty around this estimate remains wide. We expect future estimates to become more precise with higher numbers of cases and deaths outside China (Figure 3). Furthermore, the estimate could represent an upper bound because information on date of onset is not available for all reported cases and asymptomatic cases are not included. It is also important to note that the fatal case in Manila was [co-infected with *Streptococcus pneumoniae* and *influenza B virus*](https://twitter.com/joel_mossong/status/1223989493176459266?s=20).
+We estimate the CFR of 2019-nCoV at 2.6% (95% confidence interval: 0.1%-11.4%). Due to the observation of only one death outside China, the uncertainty around this estimate remains wide. We expect future estimates to become more precise with higher numbers of cases and deaths outside China (Figure 3). Furthermore, the estimate could represent an upper bound because information on date of onset is not available for all reported cases and asymptomatic cases are not included. It is also important to note that the fatal case in Manila was [co-infected with *Streptococcus pneumoniae* and *influenza B virus*](https://twitter.com/joel_mossong/status/1223989493176459266?s=20).
 
 ![](figures/ncov_cfr.png)
 
