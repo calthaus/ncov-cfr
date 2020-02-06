@@ -1,14 +1,14 @@
 # Estimating case fatality ratio (CFR) of 2019-nCoV
-# Christian L. Althaus, 5 February 2020
+# Christian L. Althaus, 6 February 2020
 
 # Load libraries
 library(lubridate)
 library(bbmle)
 library(plotrix)
 
-# Load 2019-nCoV cases (n=100) identified outside of China 
-# Source: WHO Novel Coronavirus(2019-nCoV) Situation Report - 16, and media reports for the death on the Philippines
-exports <- read.csv("data/ncov_cases_20200205.csv")
+# Load 2019-nCoV cases (n=109) identified outside of China 
+# Source: WHO Novel Coronavirus(2019-nCoV) Situation Report - 17, and media reports for the death on the Philippines
+exports <- read.csv("data/ncov_cases_20200206.csv")
 begin <- ymd(exports$date[1])
 cases <- exports$cases
 deaths <- exports$deaths
@@ -73,40 +73,33 @@ plogis(coef(fit)[1])
 confidence <- confint(fit)
 plogis(confidence)
 
-# Plot the data (and results)
-png("figures/ncov_cases.png", height = 500, width = 600)
-par(mfrow = c(2, 2))
-plot(days, cases, xlim = range(interval),
-	 pch = 16, col = "steelblue", xlab = "(Data: WHO Situation Report 14)", ylab = "Cases",
-	 main = "Onset of symptoms in cases outside China", axes = FALSE, frame = FALSE)
+# Plot the data
+png("figures/ncov_cases.png", height = 250, width = 600)
+par(mfrow = c(1, 2))
+barplot(cases,
+		col = "steelblue", xlab = "Data: WHO Situation Report 17", ylab = "Cases",
+		main = "Symptom onset in cases outside China", axes = FALSE, frame = FALSE)
 axis(1, interval, begin + interval - 1)
 axis(2)
-plot(days, cumsum(cases), xlim = range(interval),
-	 ty = "b", pch = 16, col = "steelblue", xlab = NA, ylab = "Cumulative cases",
-	 axes = FALSE, frame = FALSE)
-axis(1, interval, begin + interval - 1)
-axis(2)
-plot(days, deaths, xlim = range(interval),
-	 pch = 16, col = "tomato", xlab = "(Data: WHO, ECDC, Media)", ylab = "Deaths",
-	 main = "Deaths among cases outside China", axes = FALSE, frame = FALSE)
-axis(1, interval, begin + interval - 1)
-axis(2)
-plot(days, cumsum(deaths), xlim = range(interval),
-	 ty = "b", pch = 16, col = "tomato", xlab = NA, ylab = "Cumulative deaths",
-	 axes = FALSE, frame = FALSE)
+barplot(deaths,
+		ylim = c(0, max(cases)),
+		col = "tomato", xlab = "Data: WHO, ECDC, Media", ylab = "Deaths",
+		main = "Deaths among cases outside China", axes = FALSE, frame = FALSE)
 axis(1, interval, begin + interval - 1)
 axis(2)
 dev.off()
 
 # Plot the estimtate and future changes
 png("figures/ncov_cfr.png", height = 250, width = 300)
-x_date <- c(ymd(20200202), ymd(20200203), ymd(20200204), ymd(20200205))
-y_estimate <- c(0.04271349, 0.04129256, 0.03936208, 0.02604126)
-y_upper <- c(0.187970288, 0.181715697, 0.173219590, 0.114629818)
-y_lower <- c(0.002435814, 0.002354727, 0.002244574, 0.001484787)
+x_date <- c(ymd(20200202), ymd(20200203), ymd(20200204), ymd(20200205), ymd(20200206))
+y_estimate <- c(0.04271349, 0.04129256, 0.03936208, 0.02604126, 0.01990869)
+y_upper <- c(0.187970288, 0.181715697, 0.173219590, 0.114629818, 0.087621213)
+y_lower <- c(0.002435814, 0.002354727, 0.002244574, 0.001484787, 0.001135114)
 plotCI(x_date, y_estimate,
 	   ui = y_upper, li = y_lower,
-	   xlim = range(x_date) + c(-1, 1), ylim = c(0, 0.2),
+	   xlim = range(x_date), ylim = c(0, 0.2),
 	   pch = 16, col = "steelblue",
-	   xlab = NA, ylab = "Case fatality ratio", frame = FALSE)
+	   xlab = NA, ylab = "Case fatality ratio", axes = FALSE, frame = FALSE)
+axis(1, x_date, wday(x_date, label = TRUE))
+axis(2, seq(0, 0.2, 0.05), seq(0, 0.2, 0.05))
 dev.off()
