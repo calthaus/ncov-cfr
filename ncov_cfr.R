@@ -1,14 +1,14 @@
 # Estimating case fatality ratio (CFR) of 2019-nCoV
-# Christian L. Althaus, 6 February 2020
+# Christian L. Althaus, 7 February 2020
 
 # Load libraries
 library(lubridate)
 library(bbmle)
 library(plotrix)
 
-# Load 2019-nCoV cases (n=109) identified outside of China 
-# Source: WHO Novel Coronavirus(2019-nCoV) Situation Report - 17, and media reports for the death on the Philippines
-exports <- read.csv("data/ncov_cases_20200206.csv")
+# Load 2019-nCoV cases (n=121) identified outside of China 
+# Source: WHO Novel Coronavirus(2019-nCoV) Situation Report - 18, and media reports for the death on the Philippines
+exports <- read.csv("data/ncov_cases_20200207.csv")
 begin <- ymd(exports$date[1])
 cases <- exports$cases
 deaths <- exports$deaths
@@ -77,7 +77,7 @@ plogis(confidence)
 png("figures/ncov_cases.png", height = 250, width = 600)
 par(mfrow = c(1, 2))
 barplot(cases,
-		col = "steelblue", xlab = "Data: WHO Situation Report 17", ylab = "Cases",
+		col = "steelblue", xlab = "Data: WHO Situation Report 18", ylab = "Cases",
 		main = "Symptom onset in cases outside China", axes = FALSE, frame = FALSE)
 axis(1, interval, begin + interval - 1)
 axis(2)
@@ -91,10 +91,10 @@ dev.off()
 
 # Plot the estimtate and future changes
 png("figures/ncov_cfr.png", height = 250, width = 300)
-x_date <- c(ymd(20200202), ymd(20200203), ymd(20200204), ymd(20200205), ymd(20200206))
-y_estimate <- c(0.04271349, 0.04129256, 0.03936208, 0.02604126, 0.01990869)
-y_upper <- c(0.187970288, 0.181715697, 0.173219590, 0.114629818, 0.087621213)
-y_lower <- c(0.002435814, 0.002354727, 0.002244574, 0.001484787, 0.001135114)
+x_date <- c(ymd(20200202), ymd(20200203), ymd(20200204), ymd(20200205), ymd(20200206), ymd(20200207))
+y_estimate <- c(0.04271349, 0.04129256, 0.03936208, 0.02604126, 0.01990869, 0.01712611)
+y_upper <- c(0.187970288, 0.181715697, 0.173219590, 0.114629818, 0.087621213, 0.0009764659)
+y_lower <- c(0.002435814, 0.002354727, 0.002244574, 0.001484787, 0.001135114, 0.0753654141)
 plotCI(x_date, y_estimate,
 	   ui = y_upper, li = y_lower,
 	   xlim = range(x_date), ylim = c(0, 0.2),
