@@ -1,6 +1,6 @@
 # Estimating case fatality ratio of 2019-nCoV from observed cases outside China
 
-*Updated report: 7 February 2020*
+*Updated report: 8 February 2020*
 
 Christian L. Althaus (christian.althaus@ispm.unibe.ch), Institute of Social and Preventive Medicine, University of Bern, Bern, Switzerland
 
