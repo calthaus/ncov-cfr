@@ -1,10 +1,10 @@
 # Estimating case fatality ratio of 2019-nCoV from observed cases outside China
 
-*Updated report: 8 February 2020*
+*Updated report: 11 February 2020*
 
 Christian L. Althaus (christian.althaus@ispm.unibe.ch), Institute of Social and Preventive Medicine, University of Bern, Bern, Switzerland
 
-**Summary: We provide a preliminary estimate of the case fatality ratio (CFR) of 2019-nCoV at 1.5% (95% confidence interval: 0.1%-6.6%). While there remains considerable uncertainty around this estimate (n = 1!), CFR is arguably higher than what is typically observed for seasonal influenza, but lower than what was observed for SARS-CoV or MERS-CoV.**
+**Summary: We provide a preliminary estimate of the case fatality ratio (CFR) of 2019-nCoV at 1.2% (95% confidence interval: <0.1%-5.3%). While there remains considerable uncertainty around this estimate (n = 1!), CFR is arguably higher than what is typically observed for seasonal influenza, but lower than what was observed for SARS-CoV or MERS-CoV.**
 
 While the basic reproduction number of the 2019-nCoV epidemic in China [has been estimated](https://github.com/jriou/wcov) at 2.2 (90% high density interval: 1.4-3.8) (1,2), there remains considerable uncertainty regarding the case fatality ratio (CFR). To date, naive estimates of CFR from the reported numbers of confirmed cases and deaths are difficult to interpret due to possible biases in observed cases and the right-censoring of cases with respect to the time delay from illness onset to death (3).
 
@@ -12,7 +12,7 @@ We argue that reported 2019-nCoV cases and deaths outside China are less prone t
 
 ![](figures/ncov_cases.png)
 
-**Figure 1. Reported 2019-nCoV cases outside China by onset of symptoms and time of death.** The WHO [Novel Coronavirus(2019-nCoV) Situation Report - 19](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports) reports onset of symptoms for 130 cases (out of a total of 288 cases). The first death outside China has been reported by WHO, [ECDC](https://www.ecdc.europa.eu/en/novel-coronavirus-china) and [international media](https://www.theguardian.com/global-development/2020/feb/02/coronavirus-deaths-hong-kong-health-workers-to-strike-china-border-).
+**Figure 1. Reported 2019-nCoV cases outside China by onset of symptoms and time of death.** The WHO [Novel Coronavirus(2019-nCoV) Situation Report - 21](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports) reports onset of symptoms for 143 cases (out of a total of 319 cases). The first death outside China has been reported by WHO, [ECDC](https://www.ecdc.europa.eu/en/novel-coronavirus-china) and [international media](https://www.theguardian.com/global-development/2020/feb/02/coronavirus-deaths-hong-kong-health-workers-to-strike-china-border-).
 
 First, we collect 2019-nCoV cases and deaths outside China from [WHO](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/), [ECDC](https://www.ecdc.europa.eu/en/novel-coronavirus-china) and [international media](https://www.theguardian.com/global-development/2020/feb/02/coronavirus-deaths-hong-kong-health-workers-to-strike-china-border-) (Figure 1). We then model the expected incidence of death due 2019-nCoV given the CFR. To this end, we assume that the time from onset to death follows a gamma distribution with a mean of 15.3 days and a shape parameter of 5.05 (Figure 2) (4). Finally, we use a maximum-likelihood framework to estimate CFR by fitting the model to the data assuming the observed numbers of deaths are Poisson distributed (see `R` code file [`ncov_cfr.R`](ncov_cfr.R)).
 

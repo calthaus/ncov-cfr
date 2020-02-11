@@ -1,5 +1,6 @@
 # Estimating case fatality ratio (CFR) of 2019-nCoV
 # Christian L. Althaus, 8 February 2020
+# Updated 2020-02-11 
 
 # Load libraries
 library(lubridate)
@@ -8,7 +9,7 @@ library(plotrix)
 
 # Load 2019-nCoV cases (n=130) identified outside of China 
 # Source: WHO Novel Coronavirus(2019-nCoV) Situation Report - 19, and media reports for the death on the Philippines
-exports <- read.csv("data/ncov_cases_20200208.csv")
+exports <- read.csv("data/ncov_cases_20200210.csv")
 begin <- ymd(exports$date[1])
 cases <- exports$cases
 deaths <- exports$deaths
