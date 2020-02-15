@@ -32,23 +32,8 @@ nll <- function(cfr, death_shape, death_rate) {
             }
         }
     }
-    ll <- sum(dpois(deaths, expected, log = TRUE)) # Daily incidence of deaths
-    #ll <- dpois(1, sum(expected), log = TRUE) # Cumulative incidence of deaths
+    ll <- sum(dpois(deaths, expected, log = TRUE))
     return(-ll)
-}
-
-mortality <- function(cfr, death_shape, death_rate) {
-    cfr <- plogis(cfr)
-    expected <- numeric(n_days)
-    for(i in days) {
-        for(j in 1:n_cases) {
-            d <- i - onset[j]
-            if(d >= 0) {
-                expected[i] <- expected[i] + cfr*diff(pgamma(c(d - 0.5, d + 0.5), shape = death_shape, rate = death_rate))
-            }
-        }
-    }
-    return(expected)
 }
 
 # Analyze all data sets of observed COVID-19 cases outside China
@@ -83,7 +68,7 @@ for(i in 1:length(files)) {
 
 # Save estimates
 estimates$date <- as_date(estimates$date)
-saveRDS(estimates, "data/cfr.rds")
+saveRDS(estimates, "out/cfr.rds")
 
 # Plot the most recent data set
 png("figures/ncov_cases.png", height = 250, width = 600)
@@ -105,9 +90,8 @@ dev.off()
 png("figures/ncov_cfr.png", height = 250, width = 300)
 plotCI(estimates$date, estimates$mle,
 	   ui = estimates$upper, li = estimates$lower,
-	   xlim = range(estimates$date), ylim = c(0, 0.05),
-	   pch = 16, col = "steelblue",
+	   ylim = c(0, 0.2), pch = 16, col = "steelblue",
 	   xlab = NA, ylab = "Case fatality ratio", axes = FALSE, frame = FALSE)
 axis(1, estimates$date, paste0(day(estimates$date), "/", month(estimates$date)))
-axis(2, seq(0, 0.05, 0.01), seq(0, 0.05, 0.01))
+axis(2)
 dev.off()
