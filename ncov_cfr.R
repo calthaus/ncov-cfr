@@ -1,5 +1,5 @@
 # Estimating case fatality ratio (CFR) of COVID-19
-# Christian L. Althaus, 14 February 2020
+# Christian L. Althaus, 15 February 2020
 
 # Load libraries
 library(lubridate)
@@ -105,9 +105,9 @@ dev.off()
 png("figures/ncov_cfr.png", height = 250, width = 300)
 plotCI(estimates$date, estimates$mle,
 	   ui = estimates$upper, li = estimates$lower,
-	   xlim = range(estimates$date), ylim = c(0, 0.2),
+	   xlim = range(estimates$date), ylim = c(0, 0.05),
 	   pch = 16, col = "steelblue",
 	   xlab = NA, ylab = "Case fatality ratio", axes = FALSE, frame = FALSE)
 axis(1, estimates$date, paste0(day(estimates$date), "/", month(estimates$date)))
-axis(2, seq(0, 0.2, 0.05), seq(0, 0.2, 0.05))
+axis(2, seq(0, 0.05, 0.01), seq(0, 0.05, 0.01))
 dev.off()
