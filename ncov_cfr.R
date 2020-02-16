@@ -1,18 +1,26 @@
 # Estimating case fatality ratio (CFR) of COVID-19
-# Christian L. Althaus, 15 February 2020
+# Christian L. Althaus, 16 February 2020
 
 # Load libraries
 library(lubridate)
 library(bbmle)
 library(plotrix)
+library(fitdistrplus)
 
-# Estimating gamma distribution of onset of death from Linton et al. (http://dx.doi.org/10.1101/2020.01.26.20018754)
+# Estimating distribution from onset of symptoms to death
+# Linton et al. (http://dx.doi.org/10.1101/2020.01.26.20018754)
 linton <- function(shape, rate) {
     ssr <- sum((qgamma(c(0.05, 0.5, 0.95), shape = exp(shape), rate = exp(rate)) - c(6.1, 14.3, 28.0))^2)
     return(ssr)
 }
 free_linton <- c(shape = log(4), rate = log(4/14.3))
 fit_linton <- mle2(linton, start = as.list(free_linton), method = "Nelder-Mead")
+
+# Imperial College London (https://www.imperial.ac.uk/media/imperial-college/medicine/sph/ide/gida-fellowships/Imperial-College-2019-nCoV-severity-10-02-2020.pdf)
+imperial <- read.csv("data/hubei_early_deaths_2020_07_02.csv")
+imperial <- dmy(imperial$date_death) - dmy(imperial$date_onset)
+imperial <- as.numeric(na.omit(imperial))
+fit_imperial <- fitdist(imperial, "gamma")
 
 png("figures/ncov_dist.png", height = 250, width = 300)
 curve(dgamma(x, exp(coef(fit_linton)[[1]]), exp(coef(fit_linton)[[2]])), 0, 40,
@@ -38,7 +46,7 @@ nll <- function(cfr, death_shape, death_rate) {
 
 # Analyze all data sets of observed COVID-19 cases outside China
 # Source: WHO, ECDC and international media
-files <- list.files("data", pattern = ".csv")
+files <- list.files("data", pattern = "ncov_cases")
 estimates <- as.data.frame(matrix(NA, nrow = length(files), ncol = 4))
 names(estimates) <- c("date", "mle", "lower", "upper")
 for(i in 1:length(files)) {
