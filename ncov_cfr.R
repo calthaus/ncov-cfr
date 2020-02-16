@@ -9,12 +9,10 @@ library(fitdistrplus)
 
 # Estimating distribution from onset of symptoms to death
 # Linton et al. (http://dx.doi.org/10.1101/2020.01.26.20018754)
-linton <- function(shape, rate) {
-    ssr <- sum((qgamma(c(0.05, 0.5, 0.95), shape = exp(shape), rate = exp(rate)) - c(6.1, 14.3, 28.0))^2)
-    return(ssr)
-}
-free_linton <- c(shape = log(4), rate = log(4/14.3))
-fit_linton <- mle2(linton, start = as.list(free_linton), method = "Nelder-Mead")
+linton <- read.csv("data/linton_supp_tableS1_S2_8Feb2020.csv")
+linton <- dmy(linton$Death) - dmy(linton$Onset)
+linton <- as.numeric(na.omit(linton))
+fit_linton <- fitdist(linton, "gamma")
 
 # Imperial College London (https://www.imperial.ac.uk/media/imperial-college/medicine/sph/ide/gida-fellowships/Imperial-College-2019-nCoV-severity-10-02-2020.pdf)
 imperial <- read.csv("data/hubei_early_deaths_2020_07_02.csv")
@@ -23,9 +21,13 @@ imperial <- as.numeric(na.omit(imperial))
 fit_imperial <- fitdist(imperial, "gamma")
 
 png("figures/ncov_dist.png", height = 250, width = 300)
-curve(dgamma(x, exp(coef(fit_linton)[[1]]), exp(coef(fit_linton)[[2]])), 0, 40,
+curve(dgamma(x, coef(fit_linton)[[1]], coef(fit_linton)[[2]]), 0, 40,
       col = "steelblue", xlab = "Time from onset to death (days)", ylab = "Probability density",
       frame = FALSE)
+linton_mean <- coef(fit_linton)[[1]]/coef(fit_linton)[[2]]
+linton_median <- qgamma(0.5, coef(fit_linton)[[1]], coef(fit_linton)[[2]])
+lines(c(linton_mean, linton_mean), c(0, dgamma(linton_mean, coef(fit_linton)[[1]], coef(fit_linton)[[2]])), col = "steelblue", lty = 2)
+lines(c(linton_median, linton_median), c(0, dgamma(linton_median, coef(fit_linton)[[1]], coef(fit_linton)[[2]])), col = "steelblue", lty = 3)
 dev.off()
 
 # Likelihood and expected mortality function
@@ -65,7 +67,7 @@ for(i in 1:length(files)) {
     
     # Fit the model
     free <- c(cfr = 0)
-    fixed <- c(death_shape = exp(coef(fit_linton)[[1]]), death_rate = exp(coef(fit_linton)[[2]]))
+    fixed <- c(death_shape = coef(fit_linton)[[1]], death_rate = coef(fit_linton)[[2]])
     fit <- mle2(nll, start = as.list(free), fixed = as.list(fixed), method = "Brent", lower = -100, upper = 100)
     
     # Write estimates
@@ -95,7 +97,7 @@ axis(2)
 dev.off()
 
 # Plot the estimates
-png("figures/ncov_cfr.png", height = 250, width = 300)
+png("figures/ncov_cfr.png", height = 250, width = 600)
 plotCI(estimates$date, estimates$mle,
 	   ui = estimates$upper, li = estimates$lower,
 	   ylim = c(0, 0.2), pch = 16, col = "steelblue",
