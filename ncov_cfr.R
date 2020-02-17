@@ -8,7 +8,7 @@ library(plotrix)
 library(fitdistrplus)
 
 # Estimating distribution from onset of symptoms to death
-# Linton et al. (http://dx.doi.org/10.1101/2020.01.26.20018754)
+# Linton et al. (https://doi.org/10.3390/jcm9020538)
 linton <- read.csv("data/linton_supp_tableS1_S2_8Feb2020.csv")
 linton <- dmy(linton$Death) - dmy(linton$Onset)
 linton <- as.numeric(na.omit(linton))
