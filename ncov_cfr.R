@@ -1,5 +1,5 @@
 # Estimating case fatality ratio (CFR) of COVID-19
-# Christian L. Althaus, 16 February 2020
+# Christian L. Althaus, 19 February 2020
 
 # Load libraries
 library(lubridate)
