@@ -1,10 +1,10 @@
 # Estimating case fatality ratio of COVID-19 from observed cases outside China
 
-*Updated report: 19 February 2020*
+*Updated report: 20 February 2020*
 
 Christian L. Althaus (christian.althaus@ispm.unibe.ch), Institute of Social and Preventive Medicine, University of Bern, Bern, Switzerland
 
-**Summary: We provide a preliminary estimate of the overall case fatality ratio (CFR) of COVID-19 at 1.9% (95% confidence interval: 0.5%-4.9%).**
+**Summary: We provide a preliminary estimate of the overall case fatality ratio (CFR) of COVID-19 at 1.8% (95% confidence interval: 0.4%-4.6%).**
 
 COVID-19 has spread rapidly in China with a basic reproduction number of 2.2 (90% high density interval: 1.4-3.8) and a doubling time of around one week during the early phase of the epidemic (1,2). To date, uncertainty remains regarding the case fatality ratio (CFR) of COVID-19. Naive estimates of CFR from the reported numbers of confirmed cases and deaths are difficult to interpret due to the possible underascertainment of mild cases and the right-censoring of cases with respect to the time delay from illness onset to death (3). We argue that reported COVID-19 cases and deaths outside China are less prone to bias and could provide more precise estimates of the absolute CFR (Figure 1, Table 1).
 
@@ -20,6 +20,10 @@ Date | Country | Sex | Age | Comorbidities | Notes | Source
 13 Feb 2020 | France | Male | 80 y | - | Included | [Link](https://www.theguardian.com/world/2020/feb/15/chinese-tourist-in-france-becomes-europes-first-coronavirus-fatality)
 14 Feb 2020 | Japan | Female | 80+ y | - | Included | [Link](https://www.theguardian.com/world/2020/feb/13/japan-reports-first-coronavirus-death-as-44-more-cases-confirmed-aboard-cruise-ship)
 15 Feb 2020 | Taiwan | Male | 61 y | *Hepatitis B virus* and diabetes | Not included (based on WHO country classifications) | [Link](https://www.theguardian.com/world/2020/feb/16/taiwan-reports-first-death-from-coronavirus)
+19 Feb 2020 | Japan | Female | 84 y | - | Not yet included | [Link](https://www.theguardian.com/world/2020/feb/20/coronavirus-two-diamond-princess-passengers-die-as-japan-defends-quarantine)
+19 Feb 2020 | Japan | Male | 87 y | - | Not yet included | [Link](https://www.theguardian.com)
+19 Feb 2020 | Iran | ? | ? | - | Not yet included | [Link](https://www.theguardian.com/world/2020/feb/20/coronavirus-two-diamond-princess-passengers-die-as-japan-defends-quarantine)
+19 Feb 2020 | Iran | ? | ? | - | Not yet included | [Link](https://www.theguardian.com)
 
 First, we collect COVID-19 cases and deaths outside China from [WHO](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/), [ECDC](https://www.ecdc.europa.eu/en/novel-coronavirus-china) and international media (Figure 1, Table 1). We then model the expected incidence of death due to COVID-19 given the CFR. To this end, we assume that the time from onset to death follows a gamma distribution with a mean of 15.1 days and a shape parameter of 5.1 (Figure 2) (4). Finally, we use a maximum-likelihood framework to estimate CFR by fitting the model to the data assuming the observed numbers of deaths are Poisson distributed (see `R` code file [`ncov_cfr.R`](ncov_cfr.R)).
 
@@ -27,7 +31,7 @@ First, we collect COVID-19 cases and deaths outside China from [WHO](https://www
 
 **Figure 2. Probability distribution of time from onset of COVID-19 symptoms to death.** The distribution is based on publicly available data collected by Linton et al. (4). Dashed and dotted lines corresond to the mean (15.1 days) and median (14.1 days).
 
-We estimate the CFR of COVID-19 at 1.9% (95% confidence interval: 0.5%-4.9%). Due to the small number of deaths, the uncertainty around this estimate remains wide. Increasing numbers of cases and deaths outside China will increase the precision of the estimate (Figure 3). Furthermore, the estimate could represent an upper bound because information on date of onset of symptoms is not available for all reported cases and asymptomatic cases are not included.
+We estimate the CFR of COVID-19 at 1.8% (95% confidence interval: 0.4%-4.6%). Due to the small number of deaths, the uncertainty around this estimate remains wide. Increasing numbers of cases and deaths outside China will increase the precision of the estimate (Figure 3). Furthermore, the estimate could represent an upper bound because information on date of onset of symptoms is not available for all reported cases and asymptomatic cases are not included.
 
 ![](figures/ncov_cfr.png)
 
