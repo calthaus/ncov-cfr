@@ -6,6 +6,10 @@ library(lubridate)
 library(bbmle)
 library(plotrix)
 library(fitdistrplus)
+library(RColorBrewer)
+
+# Define colors
+cols <- brewer.pal(3, "Set1")
 
 # Estimating distribution from onset of symptoms to death
 # Linton et al. (https://doi.org/10.3390/jcm9020538)
@@ -22,12 +26,12 @@ fit_imperial <- fitdist(imperial, "gamma")
 
 png("figures/ncov_dist.png", height = 250, width = 300)
 curve(dgamma(x, coef(fit_linton)[[1]], coef(fit_linton)[[2]]), 0, 40,
-      col = "steelblue", xlab = "Time from onset to death (days)", ylab = "Probability density",
+      col = cols[2], xlab = "Time from onset to death (days)", ylab = "Probability density",
       frame = FALSE)
 linton_mean <- coef(fit_linton)[[1]]/coef(fit_linton)[[2]]
 linton_median <- qgamma(0.5, coef(fit_linton)[[1]], coef(fit_linton)[[2]])
-lines(c(linton_mean, linton_mean), c(0, dgamma(linton_mean, coef(fit_linton)[[1]], coef(fit_linton)[[2]])), col = "steelblue", lty = 2)
-lines(c(linton_median, linton_median), c(0, dgamma(linton_median, coef(fit_linton)[[1]], coef(fit_linton)[[2]])), col = "steelblue", lty = 3)
+lines(c(linton_mean, linton_mean), c(0, dgamma(linton_mean, coef(fit_linton)[[1]], coef(fit_linton)[[2]])), col = cols[2], lty = 2)
+lines(c(linton_median, linton_median), c(0, dgamma(linton_median, coef(fit_linton)[[1]], coef(fit_linton)[[2]])), col = cols[2], lty = 3)
 dev.off()
 
 # Likelihood and expected mortality function
@@ -84,13 +88,13 @@ saveRDS(estimates, "out/cfr.rds")
 png("figures/ncov_cases.png", height = 250, width = 600)
 par(mfrow = c(1, 2))
 barplot(cases,
-		col = "steelblue", xlab = "Data: WHO Situation Reports", ylab = "Cases",
+		col = cols[2], xlab = "Data: WHO Situation Reports", ylab = "Cases",
 		main = "Symptom onset in cases outside China", axes = FALSE, frame = FALSE)
 axis(1, interval, begin + interval - 1)
 axis(2)
-barplot(deaths,
+barplot(t(as.matrix(exports[, 3:4])),
 		ylim = c(0, max(cases)),
-		col = "tomato", xlab = "Data: WHO, ECDC, Media", ylab = "Deaths",
+		col = cols[c(1,3)], xlab = "Data: WHO, ECDC, Media", ylab = "Deaths",
 		main = "Deaths among cases outside China", axes = FALSE, frame = FALSE)
 axis(1, interval, begin + interval - 1)
 axis(2)
@@ -100,7 +104,7 @@ dev.off()
 png("figures/ncov_cfr.png", height = 250, width = 600)
 plotCI(estimates$date, estimates$mle,
 	   ui = estimates$upper, li = estimates$lower,
-	   ylim = c(0, 0.2), pch = 16, col = "steelblue",
+	   ylim = c(0, 0.2), pch = 16, col = cols[2],
 	   xlab = NA, ylab = "Case fatality ratio", axes = FALSE, frame = FALSE)
 axis(1, estimates$date, paste0(day(estimates$date), "/", month(estimates$date)))
 axis(2)

@@ -10,7 +10,7 @@ COVID-19 has spread rapidly in China with a basic reproduction number of 2.2 (90
 
 ![](figures/ncov_cases.png)
 
-**Figure 1. Reported COVID-19 cases outside China by onset of symptoms and time of death.** The WHO [Coronavirus disease 2019 (COVID-19) situation reports](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/) provide the dates of onset of symptoms of cases outside China. Deaths outside China have been reported by WHO, [ECDC](https://www.ecdc.europa.eu/en/novel-coronavirus-china) and international media.
+**Figure 1. Reported COVID-19 cases outside China by onset of symptoms and time of death.** The WHO [Coronavirus disease 2019 (COVID-19) situation reports](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/) provide the dates of onset of symptoms of cases outside China. Deaths outside China have been reported by WHO, [ECDC](https://www.ecdc.europa.eu/en/novel-coronavirus-china) and international media. Deaths in red are included and deaths in green are excluded from the analysis.
 
 **Table 1. List of fatal COVID-19 cases outside China.**
 
