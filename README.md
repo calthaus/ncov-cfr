@@ -4,7 +4,7 @@
 
 Christian L. Althaus (christian.althaus@ispm.unibe.ch), Institute of Social and Preventive Medicine, University of Bern, Bern, Switzerland
 
-**Summary: We provide a preliminary estimate of the overall case fatality ratio (CFR) of COVID-19 at 1.7% (95% confidence interval: 0.4%-4.4%).**
+**Summary: We provide a preliminary estimate of the overall case fatality ratio (CFR) of COVID-19 at 1.6% (95% confidence interval: 0.4%-4.1%).**
 
 COVID-19 has spread rapidly in China with a basic reproduction number of 2.2 (90% high density interval: 1.4-3.8) and a doubling time of around one week during the early phase of the epidemic (1,2). To date, uncertainty remains regarding the case fatality ratio (CFR) of COVID-19. Naive estimates of CFR from the reported numbers of confirmed cases and deaths are difficult to interpret due to the possible underascertainment of mild cases and the right-censoring of cases with respect to the time delay from illness onset to death (3). We argue that reported COVID-19 cases and deaths outside China are less prone to bias and could provide more precise estimates of the absolute CFR (Figure 1, Table 1).
 
@@ -32,7 +32,7 @@ First, we collect COVID-19 cases and deaths outside China from [WHO](https://www
 
 **Figure 2. Probability distribution of time from onset of COVID-19 symptoms to death.** The distribution is based on publicly available data collected by Linton et al. (4). Dashed and dotted lines corresond to the mean (15.1 days) and median (14.1 days).
 
-We estimate the CFR of COVID-19 at 1.7% (95% confidence interval: 0.4%-4.4%). Due to the small number of deaths, the uncertainty around this estimate remains wide. Increasing numbers of cases and deaths outside China will increase the precision of the estimate (Figure 3). Furthermore, the estimate could represent an upper bound because information on date of onset of symptoms is not available for all reported cases and asymptomatic cases are not included.
+We estimate the CFR of COVID-19 at 1.6% (95% confidence interval: 0.4%-4.1%). Due to the small number of deaths, the uncertainty around this estimate remains wide. Increasing numbers of cases and deaths outside China will increase the precision of the estimate (Figure 3). Furthermore, the estimate could represent an upper bound because information on date of onset of symptoms is not available for all reported cases and asymptomatic cases are not included.
 
 ![](figures/ncov_cfr.png)
 

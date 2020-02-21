@@ -24,7 +24,7 @@ imperial <- dmy(imperial$date_death) - dmy(imperial$date_onset)
 imperial <- as.numeric(na.omit(imperial))
 fit_imperial <- fitdist(imperial, "gamma")
 
-png("figures/ncov_dist.png", height = 250, width = 300)
+png("figures/ncov_dist.png", height = 350, width = 450)
 curve(dgamma(x, coef(fit_linton)[[1]], coef(fit_linton)[[2]]), 0, 40,
       col = cols[2], xlab = "Time from onset to death (days)", ylab = "Probability density",
       frame = FALSE)
@@ -85,7 +85,7 @@ estimates$date <- as_date(estimates$date)
 saveRDS(estimates, "out/cfr.rds")
 
 # Plot the most recent data set
-png("figures/ncov_cases.png", height = 250, width = 600)
+png("figures/ncov_cases.png", height = 350, width = 900)
 par(mfrow = c(1, 2))
 barplot(cases,
 		col = cols[2], xlab = "Data: WHO Situation Reports", ylab = "Cases",
@@ -101,7 +101,7 @@ axis(2)
 dev.off()
 
 # Plot the estimates
-png("figures/ncov_cfr.png", height = 250, width = 600)
+png("figures/ncov_cfr.png", height = 350, width = 450)
 plotCI(estimates$date, estimates$mle,
 	   ui = estimates$upper, li = estimates$lower,
 	   ylim = c(0, 0.2), pch = 16, col = cols[2],
