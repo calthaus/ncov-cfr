@@ -6,8 +6,6 @@ Christian L. Althaus (christian.althaus@ispm.unibe.ch), Institute of Social and 
 
 **Summary: We provide a preliminary estimate of the overall case fatality ratio (CFR) of COVID-19 at 1.6% (95% confidence interval: 0.4%-4.1%). On 21 Februar 2020, we decided to stop our analysis because the increasingly unclear situation of the epidemic outside China would result in biased estimates.**
 
-increasingly unclear situation of the epidemic outside China that could led to biased estimates, we decided to stop our anal**
-
 COVID-19 has spread rapidly in China with a basic reproduction number of 2.2 (90% high density interval: 1.4-3.8) and a doubling time of around one week during the early phase of the epidemic (1,2). To date, uncertainty remains regarding the case fatality ratio (CFR) of COVID-19. Naive estimates of CFR from the reported numbers of confirmed cases and deaths are difficult to interpret due to the possible underascertainment of mild cases and the right-censoring of cases with respect to the time delay from illness onset to death (3). We argue that reported COVID-19 cases and deaths outside China are less prone to bias and could provide more precise estimates of the absolute CFR (Figure 1, Table 1).
 
 ![](figures/ncov_cases.png)
