@@ -1,10 +1,12 @@
 # Estimating case fatality ratio of COVID-19 from observed cases outside China
 
-*Updated report: 21 February 2020*
+*Updated report: 28 February 2020*
 
 Christian L. Althaus (christian.althaus@ispm.unibe.ch), Institute of Social and Preventive Medicine, University of Bern, Bern, Switzerland
 
-**Summary: We provide a preliminary estimate of the overall case fatality ratio (CFR) of COVID-19 at 1.6% (95% confidence interval: 0.4%-4.1%).**
+**Summary: We provide a preliminary estimate of the overall case fatality ratio (CFR) of COVID-19 at 1.6% (95% confidence interval: 0.4%-4.1%). On 21 Februar 2020, we decided to stop our analysis because the increasingly unclear situation of the epidemic outside China would result in biased estimates.**
+
+increasingly unclear situation of the epidemic outside China that could led to biased estimates, we decided to stop our anal**
 
 COVID-19 has spread rapidly in China with a basic reproduction number of 2.2 (90% high density interval: 1.4-3.8) and a doubling time of around one week during the early phase of the epidemic (1,2). To date, uncertainty remains regarding the case fatality ratio (CFR) of COVID-19. Naive estimates of CFR from the reported numbers of confirmed cases and deaths are difficult to interpret due to the possible underascertainment of mild cases and the right-censoring of cases with respect to the time delay from illness onset to death (3). We argue that reported COVID-19 cases and deaths outside China are less prone to bias and could provide more precise estimates of the absolute CFR (Figure 1, Table 1).
 
@@ -32,7 +34,7 @@ First, we collect COVID-19 cases and deaths outside China from [WHO](https://www
 
 **Figure 2. Probability distribution of time from onset of COVID-19 symptoms to death.** The distribution is based on publicly available data collected by Linton et al. (4). Dashed and dotted lines corresond to the mean (15.1 days) and median (14.1 days).
 
-We estimate the CFR of COVID-19 at 1.6% (95% confidence interval: 0.4%-4.1%). Due to the small number of deaths, the uncertainty around this estimate remains wide. Increasing numbers of cases and deaths outside China will increase the precision of the estimate (Figure 3). Furthermore, the estimate could represent an upper bound because information on date of onset of symptoms is not available for all reported cases and asymptomatic cases are not included.
+We estimate the CFR of COVID-19 at 1.6% (95% confidence interval: 0.4%-4.1%). This estimate is in good agreement with results from a similar analysis of the WHO Collaborating Centre for Infectious Disease Modelling (5). Due to the small number of deaths, the uncertainty around our estimate remains wide. Increasing numbers of cases and deaths outside China will increase the precision of the estimate (Figure 3). Furthermore, the estimate could represent an upper bound because information on date of onset of symptoms is not available for all reported cases and asymptomatic cases are not included.
 
 ![](figures/ncov_cfr.png)
 
@@ -47,3 +49,4 @@ We would like to thank Hiroshi Nishiura for kindly sharing the data collected by
 2. Li, Q., Guan, X., Wu, P., Wang, X., Zhou, L., Tong, Y., et al. (2020). [Early transmission dynamics in Wuhan, China, of novel coronavirus-infected pneumonia](https://doi.org/10.1056/NEJMoa2001316). N Engl J Med.
 3. Jung, S., Akhmetzhanov, A. R., Hayashi, K., Linton, N. M., Yang, Y., Yuan, B., et al. (2020). [Real time estimation of the risk of death from novel coronavirus (2019-nCoV) infection: Inference using exported cases](http://dx.doi.org/10.1101/2020.01.29.20019547). medRxiv.
 4. Linton, N. M., Kobayashi, T., Yang, Y., Hayashi, K., Akhmetzhanov, A. R., Jung, S., et al. (2020). [Incubation period and other epidemiological characteristics of 2019 novel coronavirus infections with right truncation: a statistical analysis of publicly available case data](https://doi.org/10.3390/jcm9020538). J Clin Med, 9(2).
+5. Dorigatti I., Okell L., Cori A., Imai N., Baguelin M., Bhatia S., et al. (2020). [Report 4: Severity of 2019-novel coronavirus (nCoV)](https://www.imperial.ac.uk/media/imperial-college/medicine/sph/ide/gida-fellowships/Imperial-College-2019-nCoV-severity-10-02-2020.pdf).
